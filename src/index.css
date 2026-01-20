@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/* In Tailwind v4, we don't need @apply for basic setup. 
+  Tailwind automatically creates CSS variables for all colors!
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Using Tailwind v4 CSS variables instead of @apply */
+  background-color: var(--color-slate-50);
+  color: var(--color-slate-900);
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 2;
+}
+
+/* Add this to index.css */
+section {
+  /* This ensures sections take up full space and don't overlap strangely */
+  min-height: 100vh;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 10s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 2;
+}
+
+/* Add these to your existing animations in index.css */
+
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.3; }
+  90% { opacity: 0.3; }
+  100% { transform: translate(100px, 100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.animate-drift {
+  animation: drift 15s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Creating different speeds for the "petals" */
+.delay-1 { animation-delay: 1s; }
+.delay-2 { animation-delay: 3s; }
+.delay-3 { animation-delay: 7s; }
+
+@keyframes vertical-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-vertical-scroll {
+  animation: vertical-scroll 20s linear infinite;
+}
+
+.animate-vertical-scroll-slow {
+  animation: vertical-scroll 30s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes drift {
+  0% { transform: translateY(0vh) translateX(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) translateX(100px) rotate(360deg); opacity: 0; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-drift {
+  animation: drift 10s linear infinite;
+}
+
+@layer utilities {
+  /* Column 1: Scrolls Upwards */
+  .animate-vertical-scroll {
+    animation: scroll-up 20s linear infinite;
+  }
+
+  /* Column 2: Scrolls Downwards */
+  .animate-vertical-scroll-down {
+    animation: scroll-down 20s linear infinite;
+  }
+}
+
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes scroll-down {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
